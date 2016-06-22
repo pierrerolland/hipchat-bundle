@@ -1,0 +1,6 @@
+services:
+    atlassian_hipchat.manager.hipchat:
+        class: Atlassian\HipchatBundle\Manager\HipchatManager
+        arguments:
+            - "@guzzle_client.hipchat"
+            - "%atlassian_hipchat.rooms%"

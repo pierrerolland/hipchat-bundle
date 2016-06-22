@@ -1,0 +1,22 @@
+{
+  "name": "pierrerolland/hipchat-bundle",
+  "description": "Integration of Hipchat in Symfony applications",
+  "type": "symfony-bundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Pierre Rolland",
+      "email": "roll.pierre@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "symfony/framework-bundle": ">=2.6",
+    "pierrerolland/guzzle-config-operations-bundle": "^1.0"
+  },
+  "autoload": {
+    "psr-0": { "Atlassian\\HipchatBundle": "" }
+  },
+  "target-dir": "Atlassian/HipchatBundle"
+}

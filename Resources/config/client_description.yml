@@ -1,0 +1,31 @@
+parameters:
+  atlassian_hipchat.client.description:
+      operations:
+        createNotification:
+          httpMethod: "POST"
+          uri: "/v2/room/{room_id}/notification"
+          parameters:
+            room_id:
+              type: "string"
+              location: "uri"
+              required: true
+            auth_token:
+              type: "string"
+              location: "query"
+              required: true
+            message:
+              type: "string"
+              location: "json"
+              required: true
+            notify:
+              type: "boolean"
+              location: "json"
+              required: true
+            color:
+              type: "string"
+              location: "json"
+              required: true
+            message_format:
+              type: "string"
+              location: "json"
+              required: true

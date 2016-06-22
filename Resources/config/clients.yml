@@ -1,0 +1,5 @@
+services:
+    atlassian_hipchat.client.hipchat:
+        class: GuzzleHttp\Client
+        tags:
+          - { name: guzzle.client, alias: hipchat }
