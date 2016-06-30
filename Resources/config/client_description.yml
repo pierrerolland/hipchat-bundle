@@ -1,6 +1,32 @@
 parameters:
   atlassian_hipchat.client.description:
       operations:
+        getRoom:
+          httpMethod: "GET"
+          uri: "/v2/room/{room_id}"
+          responseClass: Atlassian\HipchatBundle\Model\Room
+          parameters:
+            room_id:
+              type: "string"
+              location: "uri"
+              required: true
+            auth_token:
+              type: "string"
+              location: "query"
+              required: true
+        getRoomHistory:
+          httpMethod: "GET"
+          uri: "/v2/room/{room_id}/history"
+          responseClass: Atlassian\HipchatBundle\Model\History
+          parameters:
+            room_id:
+              type: "string"
+              location: "uri"
+              required: true
+            auth_token:
+              type: "string"
+              location: "query"
+              required: true
         createNotification:
           httpMethod: "POST"
           uri: "/v2/room/{room_id}/notification"

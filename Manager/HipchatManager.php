@@ -2,6 +2,8 @@
 
 namespace Atlassian\HipchatBundle\Manager;
 
+use Atlassian\HipchatBundle\Model\History;
+use Atlassian\HipchatBundle\Model\Room;
 use Guzzle\ConfigOperationsBundle\GuzzleClient;
 use Atlassian\HipchatBundle\Exception\UndefinedRoomException;
 
@@ -30,6 +32,48 @@ class HipchatManager
     {
         $this->client = $client;
         $this->roomsConfiguration = $roomsConfiguration;
+    }
+
+    /**
+     * @param string $room
+     *
+     * @return Room
+     *
+     * @throws UndefinedRoomException
+     */
+    public function getRoom($room)
+    {
+        if (!array_key_exists($room, $this->roomsConfiguration)) {
+            throw new UndefinedRoomException(sprintf('Room %s is not defined in configuration', $room));
+        }
+
+        return $this
+            ->client
+            ->getRoom([
+                'room_id'        => $this->roomsConfiguration[$room]['id'],
+                'auth_token'     => $this->roomsConfiguration[$room]['token']
+            ]);
+    }
+
+    /**
+     * @param string $room
+     *
+     * @return History
+     *
+     * @throws UndefinedRoomException
+     */
+    public function getRoomHistory($room)
+    {
+        if (!array_key_exists($room, $this->roomsConfiguration)) {
+            throw new UndefinedRoomException(sprintf('Room %s is not defined in configuration', $room));
+        }
+
+        return $this
+            ->client
+            ->getRoomHistory([
+                'room_id'        => $this->roomsConfiguration[$room]['id'],
+                'auth_token'     => $this->roomsConfiguration[$room]['token']
+            ]);
     }
 
     /**
